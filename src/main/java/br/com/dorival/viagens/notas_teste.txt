@@ -3,9 +3,11 @@ PARA EXECUTAR:
 2) Compilar com o comando:
 	mvn clean package
 3) Subir uma versão do aplicativo com o comando:
-	java -jar target/web-jax-rs-0.0.1-SNAPSHOT.jar
+	java -jar target/"pasta_do_projeto"-0.0.1-SNAPSHOT.jar
 4) Para validar o TESTE_1 utilizar um aplicativo de chamadas rest (exemplo SoapUI)
 	a) chamar o endereço:
+		http://localhost:8083/consultarPrecos/1032/2017-05-20/2017-05-25/2/3
+		
 	b) com o JSON:
 		{	"CityCode": 1032,
 			"Checkin": "20/05/2017",
@@ -112,7 +114,8 @@ Detalhes de como calcular o valor total da viagem
 	Vamos supor que o valor retornado pela API do broker foi R$ 100,00 para adulto e R$ 50,00 para criança:
 		Pegar a quantidade de dias e multiplicar pelo valor do Adulto
 		Pegar a quantidade de dias e multiplicar pelo valor do Criança
-		Adicionar 30% de comissão para adulto e para criança * Formula para fazer isso ({valorViagemAdulto}/0.7) Ex: (500/0.7);
+		Adicionar 30% de comissão para adulto e para criança * Formula para fazer isso ({valorViagemAdulto}/0.7) Ex: (500/0.7) = 714,29 ou 500+30%=650
+		
 		Somar tudo e você terá o totalPrice
 
 Detalhes do serviço

@@ -24,7 +24,7 @@ public class ApiViagensApplication {
 	    	//	.ofPattern("dd/MM/yyyy HH:mm:ss")
 	    	    
 	    LocalDateTime dataHora = LocalDateTime.ofInstant(Instant.ofEpochMilli(context.getStartupDate()), fusoHorarioDeSaoPaulo);
-	    System.out.println("ApiViagens iniciada em " + dataHora.format(formatter)); //08/04/14 24:59:01
+	    System.out.println("*** ApiViagens iniciada em " + dataHora.format(formatter) + "***"); //08/04/14 24:59:01
 	    
 	}
 	
