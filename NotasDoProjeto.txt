@@ -14,7 +14,7 @@ O código está hospedado no GitHub: https://github.com/dbiudes/viagens
 
 	  
 
-2. PARA EXECUTAR:
+2. COMO EXECUTAR
 
 	a) No Eclipse, após importar o projeto
 		- Abrir um terminal (no Eclipse ou Externo) a partir da raiz do projeto
@@ -25,7 +25,7 @@ O código está hospedado no GitHub: https://github.com/dbiudes/viagens
 	b) No Spring Tool Suite, após importar o projeto
 		- Clicar com o botão direito sobre o projeto e escolher "Run as + Spring Boot Project"
 
-3. PARA VALIDAÇÃO 
+3. COMO VALIDAR 
  
 	a) No browser ou via SoapUI (GET) chamar o endereço abaixo (porta definida no "application.properties")
 			http://localhost:8080/pacotesporcidade/1032/2017-05-20/2017-05-25/2/3
