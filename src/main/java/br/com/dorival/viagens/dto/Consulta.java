@@ -2,9 +2,10 @@ package br.com.dorival.viagens.dto;
 
 import java.time.LocalDate;
 
-public class CriteriosConsulta {
+public class Consulta {
 
-	int cityCode;
+	String cityCode;
+	String hotelCode;
 	LocalDate checkin;
 	LocalDate checkout;
 	int diarias;
@@ -13,11 +14,18 @@ public class CriteriosConsulta {
 	
 	// Getters and Setters -------------------------
 	
-	public int getCityCode() {
+	
+	public String getCityCode() {
 		return cityCode;
 	}
-	public void setCityCode(int cityCode) {
-		this.cityCode = cityCode;
+	public void setCityCode(String cityCode) {
+		this.cityCode = cityCode.trim();
+	}
+	public String getHotelCode() {
+		return hotelCode;
+	}
+	public void setHotelCode(String hotelCode) {
+		this.hotelCode = hotelCode.trim();
 	}
 	public LocalDate getCheckin() {
 		return checkin;

@@ -5,7 +5,7 @@ import java.util.List;
 public class Hotel {
 	int id;
 	String name;
-	String cytyCode;
+	String cityCode;
 	String cityName;
 	List<HotelQuarto> rooms;
 	
@@ -56,14 +56,17 @@ public class Hotel {
 	public String getName() {
 		return name;
 	}
+	public void setCityCode(String cityCode) {
+		this.cityCode = cityCode;
+	}
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getCytyCode() {
-		return cytyCode;
+	public String getCityCode() {
+		return cityCode;
 	}
-	public void setCytyCode(String cytyCode) {
-		this.cytyCode = cytyCode;
+	public void setCytyCode(String cityCode) {
+		this.cityCode = cityCode;
 	}
 	public int getId() {
 		return id;

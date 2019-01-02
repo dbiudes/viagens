@@ -7,7 +7,7 @@ public class DiariaQuarto {
 	int roomID;
 	String categoryName;
 	@NumberFormat(pattern = "0.00")
-	double totalPrice;
+	String totalPrice;
 	DiariaPreco priceDetail;
 	
 	/* {
@@ -36,10 +36,10 @@ public class DiariaQuarto {
 	public void setCategoryName(String categoryName) {
 		this.categoryName = categoryName;
 	}
-	public double getTotalPrice() {
+	public String getTotalPrice() {
 		return totalPrice;
 	}
-	public void setTotalPrice(double totalPrice) {
+	public void setTotalPrice(String totalPrice) {
 		this.totalPrice = totalPrice;
 	}
 	public DiariaPreco getPriceDetail() {

@@ -4,8 +4,8 @@ package br.com.dorival.viagens.dto;
 
 public class DiariaPreco {
 
-	double pricePerDayAdult;
-	double pricePerDayChild;
+	String pricePerDayAdult;
+	String pricePerDayChild;
 	
 	/* {
 	  "id": 1,
@@ -21,16 +21,16 @@ public class DiariaPreco {
 	    }]
 	} */
 	
-	public double getPricePerDayAdult() {
+	public String getPricePerDayAdult() {
 		return pricePerDayAdult;
 	}
-	public void setPricePerDayAdult(double pricePerDayAdult) {
+	public void setPricePerDayAdult(String pricePerDayAdult) {
 		this.pricePerDayAdult = pricePerDayAdult;
 	}
-	public double getPricePerDayChild() {
+	public String getPricePerDayChild() {
 		return pricePerDayChild;
 	}
-	public void setPricePerDayChild(double pricePerDayChild) {
+	public void setPricePerDayChild(String pricePerDayChild) {
 		this.pricePerDayChild = pricePerDayChild;
 	}	
 }

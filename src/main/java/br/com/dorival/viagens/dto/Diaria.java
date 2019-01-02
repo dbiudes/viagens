@@ -4,6 +4,8 @@ import java.util.List;
 
 public class Diaria {
 	int id;
+	String name;
+	String cityCode;
 	String cityName;
 	List<DiariaQuarto> rooms;
 	
@@ -38,5 +40,18 @@ public class Diaria {
 	}
 	public void setRooms(List<DiariaQuarto> list) {
 		this.rooms = list;
-	}	
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getCityCode() {
+		return cityCode;
+	}
+	public void setCityCode(String cityCode) {
+		this.cityCode = cityCode;
+	}
+	
 }
