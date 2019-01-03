@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.BDDMockito.given;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 //import org.assertj.core.api.Assertions;
@@ -72,7 +73,7 @@ public class ApiViagensApplicationTests {
 		ResponseEntity<Diaria[]> response = testRestTemplate.getForEntity(path, Diaria[].class);
 		assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
 		assertThat(response.getBody()).isNotNull();
-		assertThat(response.getBody().length).isEqualTo(5);	//.isGreaterThan(0);
+		assertThat(response.getBody().length).isEqualTo(5);	//.isGreaterThan(0);		
 	}
 	
 	public List<Hotel> ListaDeHoteisMock(int numHoteis) {
@@ -120,59 +121,3 @@ public class ApiViagensApplicationTests {
 	}
 	
 }
-
-/*
-
-@Test
-public void givenUserDoesNotExists_whenUserInfoIsRetrieved_then404IsReceived()
-  throws ClientProtocolException, IOException {
-  
-   // Given
-   String name = RandomStringUtils.randomAlphabetic( 8 );
-   HttpUriRequest request = new HttpGet( "https://api.github.com/users/" + name );
- 
-   // When
-   HttpResponse httpResponse = HttpClientBuilder.create().build().execute( request );
- 
-   // Then
-   assertThat(
-     httpResponse.getStatusLine().getStatusCode(),
-     equalTo(HttpStatus.SC_NOT_FOUND));
-}
-
-@Test
-public void
-givenRequestWithNoAcceptHeader_whenRequestIsExecuted_thenDefaultResponseContentTypeIsJson()
-  throws ClientProtocolException, IOException {
-  
-   // Given
-   String jsonMimeType = "application/json";
-   HttpUriRequest request = new HttpGet( "https://api.github.com/users/eugenp" );
- 
-   // When
-   HttpResponse response = HttpClientBuilder.create().build().execute( request );
- 
-   // Then
-   String mimeType = ContentType.getOrDefault(response.getEntity()).getMimeType();
-   assertEquals( jsonMimeType, mimeType );
-}
-
-@Test
-public void
-  givenUserExists_whenUserInformationIsRetrieved_thenRetrievedResourceIsCorrect()
-  throws ClientProtocolException, IOException {
-  
-    // Given
-    HttpUriRequest request = new HttpGet( "https://api.github.com/users/eugenp" );
- 
-    // When
-    HttpResponse response = HttpClientBuilder.create().build().execute( request );
- 
-    // Then
-    GitHubUser resource = RetrieveUtil.retrieveResourceFromResponse(
-    		response, GitHubUser.class);
-    
-    assertThat( "eugenp", Matchers.is( resource.getLogin() ) );
-}
-*/
-

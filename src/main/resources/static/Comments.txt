@@ -1,3 +1,10 @@
+
+commits
+01/01/2019 - Criação do branch master
+02/01/2019 - Inclusão Sweggar, Validação Parâmetros
+
+
+
 /*
 	@Test
 	public void testaPacotesPorHotel_SemDados() {

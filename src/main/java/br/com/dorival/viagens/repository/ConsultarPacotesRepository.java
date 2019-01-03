@@ -4,10 +4,10 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.web.client.RestTemplate;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import br.com.dorival.viagens.dto.Hotel;
+
 
 @Repository
 public class ConsultarPacotesRepository {

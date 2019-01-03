@@ -2,6 +2,8 @@ package br.com.dorival.viagens.dto;
 
 import java.time.LocalDate;
 
+import javax.validation.constraints.NotEmpty;
+
 public class Consulta {
 
 	String cityCode;
@@ -13,7 +15,6 @@ public class Consulta {
 	int quantidadeCriancas;
 	
 	// Getters and Setters -------------------------
-	
 	
 	public String getCityCode() {
 		return cityCode;

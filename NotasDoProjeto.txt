@@ -1,8 +1,9 @@
+NOTAS DO PROJETO
 
 1. RESUMO
 
-A aplicação servirá como uma camada de API para fornecer dados originados a partir de broker de hotéis e processamento das regras de negócio: 
-calcular o valor dos pacotes por quarto de hotel considerando o número de diárias e de hóspedes somados ao percentual de comissão (30%).
+A aplicação servirá como uma camada de API para fornecer dados originados a partir de broker de hotéis e processamento do cálculo do
+valor dos pacotes por quarto de hotel considerando o número de diárias e o número de hóspedes somados ao percentual de comissão (30%).
 
 Esta aplicação foi construída considerando os seguintes critérios: 
 	alta disponibilidade, em uma arquitetura de Micro Serviços baseada em APIs Rest 
@@ -10,8 +11,7 @@ Esta aplicação foi construída considerando os seguintes critérios:
 	qualidade de código, utizando a plataforma SpringBoot com bibliotecas do Java 8 (Stream, Datas, etc)  
 	testabilidade, baseando-se na execução de testes unitários com mock de dados
 
-O código está hospedado no GitHub: https://github.com/dbiudes/viagens
-
+O código está hospedado no GitHub: https://github.com/dbiudes/viagens.git
 	  
 
 2. COMO EXECUTAR
@@ -27,21 +27,20 @@ O código está hospedado no GitHub: https://github.com/dbiudes/viagens
 
 3. COMO VALIDAR 
  
-	a) No browser ou via SoapUI (GET) chamar o endereço abaixo (porta definida no "application.properties")
+	a) Utilizando o Swagger no caminho http://localhost:8080/swagger-ui.html
+	
+	b) No browser ou via SoapUI (GET) chamar o endereço abaixo (porta definida no "application.properties")
 			http://localhost:8080/pacotesporcidade/1032/2017-05-20/2017-05-25/2/3
 		considerando os parametos /pacotesporcidade/{cidade}/{checkin}/{checkout}/{adults}/{childrens}
 			API DO BROKER: https://cvcbackendhotel.herokuapp.com/hotels/avail/{ID_da_Cidade}
-		resultado esperado:
-			um json com uma lista de hoteis e preços dos pacotes_por_tipo_quarto = ((adultos + crianças) * diarias) + 30%
+		resultado esperado: JSON com lista de hoteis e preços dos pacotes por_tipo_quarto = ((adultos + crianças) * diarias) + 30%
 
-
-	b)  No browser ou via SoapUI (GET) chamar o endereço abaixo (porta definida no "application.properties")
+	c)  No browser ou via SoapUI (GET) chamar o endereço abaixo (porta definida no "application.properties")
 			http://localhost:8080/pacotesporhotel/100/2017-05-20/2017-05-25/2/3
 		considerando os parametos /pacotesporhotel/{idHotel}/{checkin}/{checkout}/{adults}/{childrens}
 			API DO BROKER: https://cvcbackendhotel.herokuapp.com/hotels/{ID_do_Hotel}
-		resultado esperado:
-			um json com uma unico hoteis e preços dos pacotes_por_tipo_quarto = ((adultos + crianças) * diarias) + 30%
+		resultado esperado: JSON com um unico hotel com preços dos pacotes por_tipo_quarto = ((adultos + crianças) * diarias) + 30%
 			
-	c) No Eclipse ou no Spring Tool Suitec licando com o botão direito do mouse e selecionar "Run as + JUnit Test". 
-	   Todos os testes unitários devem processar sem erros.
+	d) No Eclipse ou no Spring Tool Suite clicando com o botão direito do mouse sobre a classe ApiViagensApplicationTests.java 
+	   e selecionando "Run as + JUnit Test". Todos os testes unitários devem processar sem erros.
 	 

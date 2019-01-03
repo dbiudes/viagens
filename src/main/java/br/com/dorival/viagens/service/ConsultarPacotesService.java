@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import br.com.dorival.viagens.dto.Consulta;
 import br.com.dorival.viagens.dto.Diaria;
 import br.com.dorival.viagens.dto.Hotel;
+import br.com.dorival.viagens.extras.DebugUtil;
 import br.com.dorival.viagens.helper.ConsultarPacotesHelper;
 import br.com.dorival.viagens.repository.ConsultarPacotesRepository;
 
@@ -25,14 +26,14 @@ public class ConsultarPacotesService {
 		//parallelStream cerca de 8s a primeira chamada e proximas entre 1.7s a 1.9s
 		//stream normal  cerca de 4s a primeira chamada e proximas entre 1.1s a 1.4s
 		
-		System.out.println("Hoteis encontrados: " + diarias.size());
+		DebugUtil.ImprimeMensagem("Hoteis encontrados: " + diarias.size());
 		return (diarias);
 	}
 	
 	public List<Diaria> consultaPrecosPorHotel(Consulta consulta) {
 		List<Hotel> hoteis = consultarPrecosRepository.ConsultaVagasPorHotel(consulta.getHotelCode());
 		List<Diaria> diarias = hoteis.stream().map(hotel -> ConsultarPacotesHelper.ProcessarHotel(hotel, consulta)).collect(Collectors.toList());
-		System.out.println("Hoteis encontrados: " + diarias.size());
+		DebugUtil.ImprimeMensagem("Hoteis encontrados: " + diarias.size());
 		return (diarias);
 	}
 }

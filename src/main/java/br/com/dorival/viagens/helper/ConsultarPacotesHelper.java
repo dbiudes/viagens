@@ -1,8 +1,13 @@
 package br.com.dorival.viagens.helper;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
+import java.util.Locale;
 import java.util.stream.Collectors;
 
 import br.com.dorival.viagens.dto.Consulta;
@@ -43,15 +48,18 @@ public class ConsultarPacotesHelper {
 		double PricePerDayAdult = hotelQuarto.getPrice().getAdult() * consulta.getQuantidadeAdultos()  * fatorComComissao;
 		double PricePerDayChild = hotelQuarto.getPrice().getChild() * consulta.getQuantidadeCriancas() * fatorComComissao;
 		
+		NumberFormat df = NumberFormat.getCurrencyInstance(Locale.US);
+		((DecimalFormat)df).applyPattern("0.00");
+		
 		DiariaPreco detalhePreco  = new DiariaPreco();
-		detalhePreco.setPricePerDayAdult(String.format("%.2f", PricePerDayAdult));
-		detalhePreco.setPricePerDayChild(String.format("%.2f", PricePerDayChild));
+		detalhePreco.setPricePerDayAdult(df.format(PricePerDayAdult));
+		detalhePreco.setPricePerDayChild(df.format(PricePerDayChild));
 		
 		DiariaQuarto diariaQuarto = new DiariaQuarto();
 		diariaQuarto.setPriceDetail(detalhePreco);
 		diariaQuarto.setRoomID(hotelQuarto.getRoomID());
 		diariaQuarto.setCategoryName(hotelQuarto.getCategoryName());
-		diariaQuarto.setTotalPrice(String.format("%.2f", PricePerDayAdult + PricePerDayChild));
+		diariaQuarto.setTotalPrice(df.format(PricePerDayAdult + PricePerDayChild));
 
 		//para fins de debug (validação dos calculos)
 		/* 
@@ -72,6 +80,57 @@ public class ConsultarPacotesHelper {
 		} 	*/
 		
 		return diariaQuarto;
+	}
+	
+	public static Consulta DefineValidaConsulta(String checkin, String checkout, String adults, String childrens) {
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		Consulta consulta = new Consulta();
+				
+		try {
+			consulta.setCheckin(LocalDate.parse(checkin, formatter));
+		} catch (Exception e) {
+			throw new IllegalArgumentException("Data de Checkin informada incorretamente.");
+		}
+		try {
+			consulta.setCheckout(LocalDate.parse(checkout, formatter));
+		} catch (Exception e) {
+			throw new IllegalArgumentException("Data de Checkout informada incorretamente.");
+		}
+		try {
+			consulta.setQuantidadeAdultos(Integer.parseInt(adults));
+		} catch (Exception e) {
+			throw new IllegalArgumentException("Número de Adultos informado incorretamente.");
+		}
+		try {
+			consulta.setQuantidadeCriancas(Integer.parseInt(childrens));
+		} catch (Exception e) {
+			throw new IllegalArgumentException("Número de Criancas informado incorretamente.");
+		}
+		
+		
+		try {
+			consulta.setDiarias(Period.between(consulta.getCheckin(), consulta.getCheckout()).getDays());
+		} catch (Exception e) {
+			throw new IllegalArgumentException("Datas de checkin e checkout informadas incorretamente.");
+		}
+		if (consulta.getDiarias() <= 0) {
+			throw new IllegalArgumentException("Datas de checkin e checkout informadas incorretamente.");
+		}
+		
+		if (consulta.getQuantidadeAdultos() < 1) {
+			throw new IllegalArgumentException("Pacote deve possuir ao menos um adulto.");
+		}
+		if (consulta.getQuantidadeAdultos() > 9) {
+			throw new IllegalArgumentException("Número de adultos não deve ser superior a 9.");
+		}
+		
+		if (consulta.getQuantidadeCriancas() < 0) {
+			throw new IllegalArgumentException("Número de crianças informado indevidamente.");
+		}
+		if (consulta.getQuantidadeCriancas() >9) {
+			throw new IllegalArgumentException("Número de crianças não deve ser superior a 9.");
+		}
+		return consulta;
 	}
 
 	
