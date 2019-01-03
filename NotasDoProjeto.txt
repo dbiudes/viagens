@@ -27,7 +27,8 @@ O código está hospedado no GitHub: https://github.com/dbiudes/viagens.git
 
 3. COMO VALIDAR 
  
-	a) Utilizando o Swagger no caminho http://localhost:8080/swagger-ui.html
+	a) Utilizando o Swagger no endereço abaixo (porta definida no "application.properties") 
+			http://localhost:8080/swagger-ui.html
 	
 	b) No browser ou via SoapUI (GET) chamar o endereço abaixo (porta definida no "application.properties")
 			http://localhost:8080/pacotesporcidade/1032/2017-05-20/2017-05-25/2/3
