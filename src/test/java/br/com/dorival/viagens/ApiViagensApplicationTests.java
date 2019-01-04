@@ -21,6 +21,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import br.com.dorival.viagens.dto.Diaria;
+import br.com.dorival.viagens.dto.DiariaPreco;
+import br.com.dorival.viagens.dto.DiariaQuarto;
 import br.com.dorival.viagens.dto.Hotel;
 import br.com.dorival.viagens.dto.HotelPreco;
 import br.com.dorival.viagens.dto.HotelQuarto;
@@ -53,7 +55,7 @@ public class ApiViagensApplicationTests {
 	
 	
 	@Test
-	public void testaPacotesPorCidade_SemDados() {
+	public void Consultar_PacotesPorCidade_SemDados() {
 		String path = "http://localhost:" + port + String.format(pathCidade, 1032);
 		System.out.println("*** testaPacotesPorCidade_SemDados: " + path);
 				
@@ -64,7 +66,7 @@ public class ApiViagensApplicationTests {
 	}
 
 	@Test
-	public void testaPacotesPorCidade_Mock() {
+	public void Consultar_PacotesPorCidade_Mock() {
 		String path = "http://localhost:" + port + String.format(pathCidade, 1032); 
 		System.out.println("*** testaPacotesPorCidade_Mock: " + path);
 		
@@ -74,6 +76,32 @@ public class ApiViagensApplicationTests {
 		assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
 		assertThat(response.getBody()).isNotNull();
 		assertThat(response.getBody().length).isEqualTo(5);	//.isGreaterThan(0);		
+	}
+	
+	@Test
+	public void validaCalculo_PacotesPorCidade_Mock() {
+		String path = "http://localhost:" + port + String.format(pathCidade, 1032); 
+		System.out.println("*** testaPacotesPorCidade_Mock: " + path);
+		
+		given(consultaPacotes.ConsultaVagasPorCidade("1032")).willReturn(ListaDeHoteisMock(5));
+		
+		ResponseEntity<Diaria[]> response = testRestTemplate.getForEntity(path, Diaria[].class);
+		assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+		
+		Diaria[] diarias = response.getBody();
+		assertThat(diarias).isNotNull();
+		assertThat(diarias.length).isEqualTo(5);	//.isGreaterThan(0);
+		
+		Diaria diaria = diarias[0];
+		List<DiariaQuarto> diariaQuartos = diaria.getRooms();
+		for (DiariaQuarto diariaQuarto : diariaQuartos) {
+			if (diariaQuarto.getRoomID() == 1) {
+				assertThat(diariaQuarto.getTotalPrice()).isEqualTo("18200.00");				
+			}
+			if (diariaQuarto.getRoomID() == 2) {
+				assertThat(diariaQuarto.getTotalPrice()).isEqualTo("22750.00");
+			}
+		}
 	}
 	
 	public List<Hotel> ListaDeHoteisMock(int numHoteis) {

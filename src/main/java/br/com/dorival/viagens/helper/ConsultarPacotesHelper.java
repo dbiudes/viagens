@@ -16,6 +16,7 @@ import br.com.dorival.viagens.dto.DiariaPreco;
 import br.com.dorival.viagens.dto.DiariaQuarto;
 import br.com.dorival.viagens.dto.Hotel;
 import br.com.dorival.viagens.dto.HotelQuarto;
+import br.com.dorival.viagens.extras.DebugUtil;
 
 
 
@@ -39,7 +40,7 @@ public class ConsultarPacotesHelper {
 
 	public static DiariaQuarto ProcessarQuarto(HotelQuarto hotelQuarto, Consulta consulta) {
 		
-		//TODO: Tornar a comissao parametrizavel
+		//TODO: Tornar a comissao parametrizada
 		double fatorComComissao = 1.3d; 	     //caso a consulta seja por hotem  (sem diarias) o fator sera uma diaria + 30% comissao
 		if (consulta.getDiarias() > 0 ) {
 			fatorComComissao = (consulta.getDiarias() * 1.3);	//a formula ({total}/0.7) nao representa os 30% de comissao estipulados
@@ -61,24 +62,8 @@ public class ConsultarPacotesHelper {
 		diariaQuarto.setCategoryName(hotelQuarto.getCategoryName());
 		diariaQuarto.setTotalPrice(df.format(PricePerDayAdult + PricePerDayChild));
 
-		//para fins de debug (validação dos calculos)
-		/* 
-		Random random = new Random(); 
-		int x = random.nextInt(1000);
-		if (x == 10) {
-			System.out.println("------------------------------------------------");
-			System.out.println("Diarias: " + consulta.getDiarias() + " Adultos : " + consulta.getQuantidadeAdultos());
-			System.out.println("Adulto Hotel: " + hotelQuarto.getPrice().getAdult());
-			System.out.println("Diarias>Adulto+Comissao  : " + detalhePreco.getPricePerDayAdult());
-			System.out.println("------------------------------------------------");
-			System.out.println("Diarias: " + consulta.getDiarias() + " Criancas: " + consulta.getQuantidadeCriancas());
-			System.out.println("Crianca Hotel: " + hotelQuarto.getPrice().getChild());
-			System.out.println("Diarias>Crianca+Comissao  : " + detalhePreco.getPricePerDayChild());
-			System.out.println("------------------------------------------------");
-			System.out.println("Fator Comissao: " + fatorComComissao);
-			System.out.println("TOTAL PRICE: " + diariaQuarto.getTotalPrice());
-		} 	*/
-		
+		DebugUtil.ImprimeCalculo(consulta, diariaQuarto, hotelQuarto, detalhePreco, fatorComComissao);
+	
 		return diariaQuarto;
 	}
 	
