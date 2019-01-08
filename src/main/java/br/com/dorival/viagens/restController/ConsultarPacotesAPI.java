@@ -34,11 +34,11 @@ public interface ConsultarPacotesAPI {
 		@ApiResponse(code=404, message="Não encontrado, verifique se o caminho foi informado corretamente ou se existe!"),
 		@ApiResponse(code=500, message="Erros internos causados pelo consumidor (client) do Microserviço, como erros de validação ou inconsistência de informações.")
 	})
-	@ApiImplicitParams({@ApiImplicitParam(name = "ID da Cidade", value = "Ex: 1032, 7110 ou 9626", paramType = "path", required = true),
-						@ApiImplicitParam(name = "Data de Checkin", value = "Data de Entrada (yyyy-mm-dd) - Ex: 2018-12-20", paramType = "path", required = true),
-						@ApiImplicitParam(name = "Data de Checkout", value = "Data de Saída (yyyy-mm-dd) - Ex: 2018-12-25", paramType = "path", required = true),
-						@ApiImplicitParam(name = "Numero de Adultos", value = "Hóspedes Adultos (1 a 9)", paramType = "path", required = true),
-						@ApiImplicitParam(name = "Numero de Criancas", value = "Hóspedes Crianças (0 a 9)", paramType = "path", required = true)
+	@ApiImplicitParams({@ApiImplicitParam(paramType = "path", required = true, name = "ID da Cidade", 		value = "Ex: 1032, 7110 ou 9626"),
+						@ApiImplicitParam(paramType = "path", required = true, name = "Data de Checkin", 	value = "Data de Entrada (yyyy-mm-dd) - Ex: 2018-12-20"),
+						@ApiImplicitParam(paramType = "path", required = true, name = "Data de Checkout", 	value = "Data de Saída (yyyy-mm-dd) - Ex: 2018-12-25"),
+						@ApiImplicitParam(paramType = "path", required = true, name = "Numero de Adultos", 	value = "Hóspedes Adultos (1 a 9)"),
+						@ApiImplicitParam(paramType = "path", required = true, name = "Numero de Criancas", value = "Hóspedes Crianças (0 a 9)")
 	})
 	@RequestMapping(method = RequestMethod.GET, value = "/pacotesporcidade/{ID da Cidade}/{Data de Checkin}/{Data de Checkout}/{Numero de Adultos}/{Numero de Criancas}", produces = "application/json"
 			//params = "Numero de Adultos=[1-9]") :[1-9]
@@ -46,11 +46,11 @@ public interface ConsultarPacotesAPI {
 	)
 	@ResponseBody 
 	List<Diaria> consultarPacotesPorCidade(
-		@PathVariable("ID da Cidade")		String idCidade,
-		@PathVariable("Data de Checkin")	String checkin,
-		@PathVariable("Data de Checkout")	String checkout,
-		@ApiParam(required = true, allowableValues = "1,2,3,4,5,6,7,8,9",   value = "Numero de Adultos", defaultValue = "1")  @PathVariable("Numero de Adultos")	String adults,
-		@ApiParam(required = true, allowableValues = "0,1,2,3,4,5,6,7,8,9", value = "Numero de Criancas", defaultValue = "0") @PathVariable("Numero de Criancas")	String childrens) ;
+		@ApiParam(required = true, 											value = "Código do cidade")  						@PathVariable("ID da Cidade")		String idCidade,
+																																@PathVariable("Data de Checkin")	String checkin,
+																																@PathVariable("Data de Checkout")	String checkout,
+		@ApiParam(required = true, allowableValues = "1,2,3,4,5,6,7,8,9",   value = "Numero de Adultos", defaultValue = "1") 	@PathVariable("Numero de Adultos")	String adults,
+		@ApiParam(required = true, allowableValues = "0,1,2,3,4,5,6,7,8,9", value = "Numero de Criancas", defaultValue = "0") 	@PathVariable("Numero de Criancas")	String childrens) ;
 	
 	
 	
@@ -62,7 +62,7 @@ public interface ConsultarPacotesAPI {
 	@ApiOperation(value="Validar pacote de viagem", httpMethod = "GET", //response=Consulta.class,
 			  notes="API para validar os preços de um hotel específico antes do fechamento do pacote. As datas seguem o padrão YYYY-MM-DD.")
 	@ApiResponses(value= {
-		@ApiResponse(code=200, message="Retorna um JSON com os quartos e preços do hotel informado"), //response=Diaria.class,
+		@ApiResponse(code=200, message="Retorna um JSON com os quartos e preços do hotel informado."), //response=Diaria.class,
 		@ApiResponse(code=204, message="Parâmetros informados incorretamente, favor validar os dados inseridos."),
 		@ApiResponse(code=400, message="Erros internos causados pelo consumidor (client) do Microserviço, como erros de validação ou inconsistência de informações."),
 		@ApiResponse(code=401, message="Não autorizado, é necessário autenticação!"),
@@ -70,20 +70,20 @@ public interface ConsultarPacotesAPI {
 		@ApiResponse(code=404, message="Não encontrado, verifique se o caminho foi informado corretamente ou se existe!"),
 		@ApiResponse(code=500, message="Erros internos causados pelo consumidor (client) do Microserviço, como erros de validação ou inconsistência de informações.")
 	})
-	@ApiImplicitParams({@ApiImplicitParam(name = "ID do Hotel", value = "Ex: 100", paramType = "path", required = true), //required = true, dataType = "string", paramType = "query"
-						@ApiImplicitParam(name = "Data de Checkin", value = "Data de Entrada (yyyy-mm-dd) - Ex: 2018-12-20", paramType = "path", required = true),
-						@ApiImplicitParam(name = "Data de Checkout", value = "Data de Saída (yyyy-mm-dd) - Ex: 2018-12-25", paramType = "path", required = true),
-						@ApiImplicitParam(name = "Numero de Adultos", value = "Hóspedes Adúltos (1 a 9)", paramType = "path", required = true),
-						@ApiImplicitParam(name = "Numero de Criancas", value = "Hóspedes Crianças (0 a 9)", paramType = "path", required = true)
+	@ApiImplicitParams({@ApiImplicitParam(paramType = "path", required = true, name = "ID do Hotel", 		value = "Ex: 100"),
+						@ApiImplicitParam(paramType = "path", required = true, name = "Data de Checkin", 	value = "Data de Entrada (yyyy-mm-dd) - Ex: 2018-12-20"),
+						@ApiImplicitParam(paramType = "path", required = true, name = "Data de Checkout", 	value = "Data de Saída (yyyy-mm-dd) - Ex: 2018-12-25"),
+						@ApiImplicitParam(paramType = "path", required = true, name = "Numero de Adultos", 	value = "Hóspedes Adúltos (1 a 9)"),
+						@ApiImplicitParam(paramType = "path", required = true, name = "Numero de Criancas", value = "Hóspedes Crianças (0 a 9)")
 	})
-	@RequestMapping(method = RequestMethod.GET, value    = "/pacotesporhotel/{ID do Hotel}/{Data de Checkin}/{Data de Checkout}/{Numero de Adultos}/{Numero de Criancas}", produces = "application/json")
+	@RequestMapping(method = RequestMethod.GET, value = "/pacotesporhotel/{ID do Hotel}/{Data de Checkin}/{Data de Checkout}/{Numero de Adultos}/{Numero de Criancas}", produces = "application/json")
 	@ResponseBody 
 	List<Diaria> consultarPacotesPorHotel(
-	    @ApiParam(value = "name that need to be updated", required = true)  @PathVariable("ID do Hotel") 		String idHotel,
-		@PathVariable("Data de Checkin")	String checkin,
-		@PathVariable("Data de Checkout")	String checkout,
-		@ApiParam(required = true, allowableValues = "1,2,3,4,5,6,7,8,9", 	value = "Numero de Adultos")  @PathVariable("Numero de Adultos")	String adults,
-		@ApiParam(required = true, allowableValues = "0,1,2,3,4,5,6,7,8,9", value = "Numero de Criancas") @PathVariable("Numero de Criancas")	String childrens);
+	    @ApiParam(required = true, 											value = "Código do hotel")  						@PathVariable("ID do Hotel") 		String idHotel,
+																																@PathVariable("Data de Checkin")	String checkin,
+																																@PathVariable("Data de Checkout")	String checkout,
+		@ApiParam(required = true, allowableValues = "1,2,3,4,5,6,7,8,9", 	value = "Numero de Adultos",  defaultValue = "1") 	@PathVariable("Numero de Adultos")	String adults,
+		@ApiParam(required = true, allowableValues = "0,1,2,3,4,5,6,7,8,9", value = "Numero de Criancas", defaultValue = "0") 	@PathVariable("Numero de Criancas")	String childrens);
 
 
 }
