@@ -1,0 +1,8 @@
+             _____    _____         _           __      __  _    ${Ansi.MAGENTA}                                      
+     /\     |  __ \  |_   _|       | |          \ \    / / (_)                                     
+    /  \    | |__) |   | |       __| |   ___     \ \  / /   _    __ _    __ _    ___   _ __    ___ 
+   / /\ \   |  ___/    | |      / _` |  / _ \     \ \/ /   | |  / _` |  / _` |  / _ \ | '_ \  / __|
+  / ____ \  | |       _| |_    | (_| | |  __/      \  /    | | | (_| | | (_| | |  __/ | | | | \__ \
+ /_/    \_\ |_|      |_____|    \__,_|  \___|       \/     |_|  \__,_|  \__, |  \___| |_| |_| |___/
+                                                                         __/ |                     
+${AnsiBackground.BLACK} ${AnsiColor.BRIGHT_WHITE} Application ${application.title} v. ${application.version} / ${application.formatted-version}           ${AnsiColor.BRIGHT_YELLOW}	Spring Boot ${spring-boot.formatted-version} ${Ansi.MAGENTA} ${AnsiBackground.DEFAULT} |___/ ${Ansi.BLACK} 

@@ -7,6 +7,7 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
 import java.util.Locale;
 
+import org.springframework.boot.Banner.Mode;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -15,16 +16,19 @@ import org.springframework.context.ConfigurableApplicationContext;
 public class ApiViagensApplication {
 
 	public static void main(String[] args) {
-	    ConfigurableApplicationContext context = SpringApplication.run(ApiViagensApplication.class, args);
+				
+		SpringApplication app = new SpringApplication(ApiViagensApplication.class);
+	    app.setBannerMode(Mode.CONSOLE);
+	    
+	    ConfigurableApplicationContext context = app.run(args);
 	    	    
 	    ZoneId fusoHorarioDeSaoPaulo = ZoneId.of("America/Sao_Paulo");
 	    DateTimeFormatter formatter = DateTimeFormatter
-	    		.ofLocalizedDateTime(FormatStyle.SHORT)
+	    		.ofLocalizedDateTime(FormatStyle.SHORT) //	.ofPattern("dd/MM/yyyy HH:mm:ss")
 	    		.withLocale(new Locale("pt", "br"));
-	    	//	.ofPattern("dd/MM/yyyy HH:mm:ss")
-	    	    
+
 	    LocalDateTime dataHora = LocalDateTime.ofInstant(Instant.ofEpochMilli(context.getStartupDate()), fusoHorarioDeSaoPaulo);
-	    System.out.println("*** ApiViagens iniciada em " + dataHora.format(formatter) + "***"); //08/04/14 24:59:01
+	    System.out.println("*** Api de Viagens iniciada em " + dataHora.format(formatter) + " ***");
 	    
 	}
 	

@@ -1,4 +1,4 @@
-package br.com.dorival.viagens.helper;
+package br.com.dorival.viagens.util;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;

@@ -11,8 +11,8 @@ import br.com.dorival.viagens.dto.ConsultaHotel;
 import br.com.dorival.viagens.dto.Diaria;
 import br.com.dorival.viagens.dto.Hotel;
 import br.com.dorival.viagens.extras.DebugUtil;
-import br.com.dorival.viagens.helper.ConsultarPacotesHelper;
 import br.com.dorival.viagens.repository.ConsultarPacotesRepository;
+import br.com.dorival.viagens.util.ConsultarPacotesHelper;
 
 @Service
 public class ConsultarPacotesService {
