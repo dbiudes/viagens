@@ -25,21 +25,19 @@ O código está hospedado no GitHub: https://github.com/dbiudes/viagens.git
 
 ### COMO VALIDAR ###
  
-1. Utilizando o Swagger no endereço abaixo (porta definida no "application.properties") 
-	http://localhost:8080/swagger-ui.html
+1. Utilizando o Swagger no endereço http://localhost:8080/swagger-ui.html (a porta está definida no "application.properties")
 	
 2. No browser ou via SoapUI (GET) chamar o endereço abaixo (porta definida no "application.properties")
-	http://localhost:8080/pacotesporcidade/1032/2017-05-20/2017-05-25/2/3
-	considerando os parametos /pacotesporcidade/{cidade}/{checkin}/{checkout}/{adults}/{childrens}
-	API DO BROKER: https://cvcbackendhotel.herokuapp.com/hotels/avail/{ID_da_Cidade}
-	resultado esperado: JSON com lista de hoteis e preços dos pacotes por_tipo_quarto = ((adultos + crianças) * diarias) + 30%
+http://localhost:8080/pacotesporcidade/1032/2017-05-20/2017-05-25/2/3
+considerando os parametos /pacotesporcidade/{cidade}/{checkin}/{checkout}/{adults}/{childrens}
+API DO BROKER: https://cvcbackendhotel.herokuapp.com/hotels/avail/{ID_da_Cidade}
+resultado esperado: JSON com lista de hoteis e preços dos pacotes por_tipo_quarto = ((adultos + crianças) * diarias) + 30%
 
 3. No browser ou via SoapUI (GET) chamar o endereço abaixo (porta definida no "application.properties")
-	http://localhost:8080/pacotesporhotel/100/2017-05-20/2017-05-25/2/3
-	considerando os parametos /pacotesporhotel/{idHotel}/{checkin}/{checkout}/{adults}/{childrens}
-	API DO BROKER: https://cvcbackendhotel.herokuapp.com/hotels/{ID_do_Hotel}
-	resultado esperado: JSON com um unico hotel com preços dos pacotes por_tipo_quarto = ((adultos + crianças) * diarias) + 30%
+http://localhost:8080/pacotesporhotel/100/2017-05-20/2017-05-25/2/3
+considerando os parametos /pacotesporhotel/{idHotel}/{checkin}/{checkout}/{adults}/{childrens}
+API DO BROKER: https://cvcbackendhotel.herokuapp.com/hotels/{ID_do_Hotel}
+resultado esperado: JSON com um unico hotel com preços dos pacotes por_tipo_quarto = ((adultos + crianças) * diarias) + 30%
 			
-4. No Eclipse ou no Spring Tool Suite clicando com o botão direito do mouse sobre a classe ApiViagensApplicationTests.java 
-    e selecionando "Run as + JUnit Test". Todos os testes unitários devem processar sem erros.
+4. No Eclipse ou no Spring Tool Suite clicando com o botão direito do mouse sobre a classe ApiViagensApplicationTests.java e selecionando "Run as + JUnit Test". Todos os testes unitários devem processar sem erros.
 	 
