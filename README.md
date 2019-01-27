@@ -1,8 +1,6 @@
 # API para Consulta de Diarias de Hoteis
 
-## NOTAS DO PROJETO ##
-
-A aplicação funciona como uma camada de API para atender a uma aplicação cliente na pesquisa dos melhores preços para os hotéis disponíveis. Para isso a API realiza uma pequisa na API do Broker de Hotéis e considerando o número de diárias (entre o checkin e o checkout) e o número de hóspedes (adultos e crianças) processando o valor das diárias para cada um dos tipos de quarto de hotéis disponíveis somando um percentual de comissão (definido em 30%).
+API para atender requisições REST de uma aplicação cliente na pesquisa de pacotes de hotéis disponíveis. A aplicação recebe uma cidade e pequisa via API junto ao Broker de Hotéis. De posse de uma lista de hoteis com os preços de seus respectivos quartos por tipo de acomodação (preço bruto) processa os pacotes hospedagem considerando as diárias (período entre o checkin e o checkout) e o número de hóspedes (total de adultos e crianças) além de incluir um percentual de comissão (definido em 30%) cobrados pela operadora.
 
 ```seq
 Cliente-->API: ConsultarPacotes (idCidade, dtCheckin, dtCheckout, adultos, crianças)
@@ -18,6 +16,9 @@ Broker->>API: Lista de Quartos Disponíveisl
 Note left of API: Processar Diárias
 API->>Cliente:Lista de Pacotes Disponíveis (Quartos do Hotel)
 ```
+
+### Requisitos Técnicos e Funcionais ###
+
 Esta aplicação foi construída considerando os seguintes critérios:
  - alta disponibilidade, utilizando uma arquitetura de Micro Serviços baseada em Spring Boot e APIs Rest
  - alta performance, onde cenário de execução paralela foi avaliado para oferecer o menor tempo de resposta
