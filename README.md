@@ -1,6 +1,13 @@
+<script src = " webfont.js "> </ script>
+<script src = " snap.svg-min.js "> </ script>
+<script src = " underscore-min.js "> </ script>
+<script src = " seqüência-diagrama-min.js "> </ script>
+
 # API para Consulta de Diarias de Hoteis
 
 API para atender requisições REST de uma aplicação cliente na pesquisa de pacotes de hotéis disponíveis. A aplicação recebe uma cidade e pequisa via API junto ao Broker de Hotéis. De posse de uma lista de hoteis com os preços de seus respectivos quartos por tipo de acomodação (preço bruto) processa os pacotes hospedagem considerando as diárias (período entre o checkin e o checkout) e o número de hóspedes (total de adultos e crianças) além de incluir um percentual de comissão (definido em 30%) cobrados pela operadora.
+
+### Diagrama de Sequencia ###
 
 ```seq
 Cliente-->API: ConsultarPacotes (idCidade, dtCheckin, dtCheckout, adultos, crianças)
