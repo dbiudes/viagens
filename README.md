@@ -4,11 +4,13 @@
 
 A aplicação funciona como uma camada de API para atender a uma aplicação cliente na pesquisa dos melhores preços para os hotéis disponíveis. Para isso a API realiza uma pequisa na API do Broker de Hotéis e considerando o número de diárias (entre o checkin e o checkout) e o número de hóspedes (adultos e crianças) processando o valor das diárias para cada um dos tipos de quarto de hotéis disponíveis somando um percentual de comissão (definido em 30%).
 
-```seq {theme="hand"}
+```seq
 Cliente-->API: Consultar Pacotes
-Note right of API: Busca junto\nao broker
+Note right of Cliente: Parâmetros:\nCheckin, Checkout,\nAdultos, Crianças
 API-->Broker: Quartos Disponíveis?
+Note right of API: Parâmetros:\nCidade
 Broker->>API: Lista de Quartos disponíveis
+Note right of Cliente: Processar Cálculo\ndas Diárias
 API->>Cliente:Pacotes Disponíveis
 ```
 Esta aplicação foi construída considerando os seguintes critérios:
