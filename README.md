@@ -2,22 +2,29 @@
 
 API para atender requisições REST de uma aplicação cliente na pesquisa de pacotes de hotéis disponíveis. A aplicação recebe uma cidade e pequisa via API junto ao Broker de Hotéis. De posse de uma lista de hoteis com os preços de seus respectivos quartos por tipo de acomodação (preço bruto) processa os pacotes hospedagem considerando as diárias (período entre o checkin e o checkout) e o número de hóspedes (total de adultos e crianças) além de incluir um percentual de comissão (definido em 30%) cobrados pela operadora.
 
-### Diagrama de Sequencia ###
+
+
+
+
+<!-- 
+Diagrama de Sequencia, gerado em: https://pandao.github.io/editor.md/en.html
 
 ```seq
-Cliente-->API: ConsultarPacotes (idCidade, dtCheckin, dtCheckout, adultos, crianças)
-API-->Broker: ConsultarQuartos(idCidade)
+Cliente->API: ConsultarPacotes (idCidade, dtCheckin, dtCheckout, adultos, crianças)
+API->Broker: ConsultarQuartos(idCidade)
 Note right of API: Preços por categoria de acomodação
 Broker->>API: Lista de Hoteis e Quartos Disponíveis
 Note left of API: Processar Diárias
 API->>Cliente: Lista de Pacotes Disponíveis (Quartos e Hotéis)
-Cliente-->API: ConfirmarHotel(idHotel)
-API-->Broker: ConsultarHotel(idHotel)
+Cliente->API: ConfirmarHotel(idHotel)
+API->Broker: ConsultarHotel(idHotel)
 Note right of API: Preços por categoria de acomodação
 Broker->>API: Lista de Quartos Disponíveisl
 Note left of API: Processar Diárias
 API->>Cliente:Lista de Pacotes Disponíveis (Quartos do Hotel)
 ```
+-->
+
 
 ### Requisitos Técnicos e Funcionais ###
 
